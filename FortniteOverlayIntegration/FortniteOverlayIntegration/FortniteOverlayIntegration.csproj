@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5B4F388F-B823-4B53-AE83-D60EDD21C4F6}</ProjectGuid>
+    <ProjectGuid>{C6B1A0B0-E06F-4739-8620-0F33A91B0B8D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>FortniteStreamIntegration</RootNamespace>
-    <AssemblyName>FortniteStreamIntegration</AssemblyName>
+    <RootNamespace>FortniteOverlayIntegration</RootNamespace>
+    <AssemblyName>FortniteOverlayIntegration</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

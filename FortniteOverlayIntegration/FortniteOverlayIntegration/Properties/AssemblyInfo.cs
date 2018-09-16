@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FortniteStreamIntegration")]
+[assembly: AssemblyTitle("FortniteOverlayIntegration")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FortniteStreamIntegration")]
+[assembly: AssemblyProduct("FortniteOverlayIntegration")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5b4f388f-b823-4b53-ae83-d60edd21c4f6")]
+[assembly: Guid("c6b1a0b0-e06f-4739-8620-0f33a91b0b8d")]
 
 // Version information for an assembly consists of the following four values:
 //
