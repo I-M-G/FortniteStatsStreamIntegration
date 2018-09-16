@@ -10,6 +10,11 @@ namespace FortniteOverlayIntegration
     {
         static void Main(string[] args)
         {
+            GetData data = new GetData();
+            data.UpdateData();
+
+            // FOR TESTING. Leave console open to view data.
+            Console.ReadLine();
         }
     }
 }
