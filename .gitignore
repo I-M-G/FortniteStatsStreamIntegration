@@ -1,0 +1,8 @@
+*.dll
+*.exe
+*.log
+db.lock
+.vs/
+
+Credentials.resx
+Credentials.Designer.cs
