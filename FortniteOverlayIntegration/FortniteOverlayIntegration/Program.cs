@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FortniteOverlayIntegration
 {
@@ -10,8 +7,10 @@ namespace FortniteOverlayIntegration
     {
         static void Main(string[] args)
         {
-            GetData data = new GetData();
-            data.UpdateData();
+            Data data = new Data();
+            List<Stat> getData = data.GetData();
+            data.WriteData(getData);
+            
 
             // FOR TESTING. Leave console open to view data.
             Console.ReadLine();

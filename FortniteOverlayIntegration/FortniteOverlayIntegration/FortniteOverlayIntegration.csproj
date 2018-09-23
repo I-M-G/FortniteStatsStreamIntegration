@@ -54,7 +54,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Credentials.resx</DependentUpon>
     </Compile>
-    <Compile Include="GetData.cs" />
+    <Compile Include="Data.cs" />
+    <Compile Include="Stat.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
