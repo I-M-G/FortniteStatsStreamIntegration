@@ -12,13 +12,9 @@ namespace FortniteOverlayIntegration
         {
             List<Stat> stats = new List<Stat>();
             string epicUserName = "ninja"; // Put your epic user name here
-            List<string> platform = new List<string>();
-            platform.Add("pc");
-            platform.Add("xbl");
-            platform.Add("psn");
+            string platform = "pc"; // Update with correct platform
 
-            // Update platform (pc, xbl, psn) and epic username
-            var client = new RestClient($"https://api.fortnitetracker.com/v1/profile/{platform[0]}/{epicUserName}");
+            var client = new RestClient($"https://api.fortnitetracker.com/v1/profile/{platform}/{epicUserName}");
             var request = new RestRequest(Method.GET);
             //request.AddHeader("Cache-Control", "no-cache");
             request.AddHeader("TRN-Api-Key", Credentials.ApiKey);
@@ -29,6 +25,9 @@ namespace FortniteOverlayIntegration
 
             var data = JsonConvert.DeserializeObject<dynamic>(responseData);
             //Console.WriteLine(data);
+
+            // TODO - REMOVE AFTER TESTING
+            File.WriteAllText(@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\AllData.txt", data.ToString());
 
             // p2 - Solo stats
             Stat totalSoloWins = new Stat("totalSoloWins", data.stats.p2.top1.value.ToString());
@@ -65,10 +64,9 @@ namespace FortniteOverlayIntegration
 
             for(int i = 0; i < data.Count; i++)
             {
-                File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\{data[i].type}.txt", data[i].value);
+                //File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\{data[i].type}.txt", data[i].value);
             }
         }
-
         
     }
 }
