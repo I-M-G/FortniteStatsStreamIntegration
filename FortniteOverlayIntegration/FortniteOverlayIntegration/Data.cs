@@ -8,11 +8,15 @@ namespace FortniteOverlayIntegration
 {
     class Data
     {
-        public List<Stat> GetData()
+
+        public List<Stat> GetData(string epicUserName, string platform)
         {
             List<Stat> stats = new List<Stat>();
-            string epicUserName = "ninja"; // Put your epic user name here
-            string platform = "pc"; // Update with correct platform
+
+            // For now lets pass the username and platform from Main?
+
+            //string epicUserName = "ninja"; // Put your epic user name here
+            //string platform = "pc"; // Update with correct platform
 
             var client = new RestClient($"https://api.fortnitetracker.com/v1/profile/{platform}/{epicUserName}");
             var request = new RestRequest(Method.GET);
@@ -27,7 +31,7 @@ namespace FortniteOverlayIntegration
             //Console.WriteLine(data);
 
             // TODO - REMOVE AFTER TESTING
-            File.WriteAllText(@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\AllData.txt", data.ToString());
+            //File.WriteAllText(@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\AllData.txt", data.ToString());
 
             // p2 - Solo stats
             Stat totalSoloWins = new Stat("totalSoloWins", data.stats.p2.top1.value.ToString());
@@ -56,6 +60,8 @@ namespace FortniteOverlayIntegration
             stats.Add(totalSquadWins);
             stats.Add(totalSquadKills);
 
+            CalculateStreak(data.lifeTimeStats[8].value);
+
             return stats;
         }
 
@@ -64,9 +70,24 @@ namespace FortniteOverlayIntegration
 
             for(int i = 0; i < data.Count; i++)
             {
-                //File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\{data[i].type}.txt", data[i].value);
+                // Update file path to where you want the files to save.
+                File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\{data[i].type}.txt", data[i].value);
             }
         }
         
+        // TODO: Implement setInterval equivalent in C#
+        private void CalculateStreak(int updatedWins)
+        {
+            int streak = 0;
+            int startingWins = 0;
+            // Do not overwrite startingWins, so that we can check the win streak while program is running.
+            if(startingWins == 0)
+            {
+                startingWins = updatedWins;
+            }
+
+            streak = Math.Abs(updatedWins - startingWins);
+            File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\WinStreak.txt", streak.ToString());
+        }
     }
 }
