@@ -13,11 +13,6 @@ namespace FortniteOverlayIntegration
         {
             List<Stat> stats = new List<Stat>();
 
-            // For now lets pass the username and platform from Main?
-
-            //string epicUserName = "ninja"; // Put your epic user name here
-            //string platform = "pc"; // Update with correct platform
-
             var client = new RestClient($"https://api.fortnitetracker.com/v1/profile/{platform}/{epicUserName}");
             var request = new RestRequest(Method.GET);
             //request.AddHeader("Cache-Control", "no-cache");
@@ -31,6 +26,7 @@ namespace FortniteOverlayIntegration
             //Console.WriteLine(data);
 
             // TODO - REMOVE AFTER TESTING
+            // Writes all the JSON to a txt file
             //File.WriteAllText(@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\AllData.txt", data.ToString());
 
             // p2 - Solo stats
@@ -60,6 +56,7 @@ namespace FortniteOverlayIntegration
             stats.Add(totalSquadWins);
             stats.Add(totalSquadKills);
 
+            // Calculates a win streak while program is running.
             CalculateStreak(System.Convert.ToInt32(data.lifeTimeStats[8].value));
 
             return stats;
@@ -75,7 +72,6 @@ namespace FortniteOverlayIntegration
             }
         }
         
-        // TODO: Implement setInterval equivalent in C#
         private void CalculateStreak(int updatedWins)
         {
             int streak = 0;

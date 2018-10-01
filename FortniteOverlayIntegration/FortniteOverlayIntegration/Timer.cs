@@ -8,10 +8,10 @@ namespace FortniteOverlayIntegration
     class Timer
     {
         private System.Timers.Timer timer;
-        private readonly int frequency = 1000 * 10; // I would advise against updating faster
+        private readonly int frequency = 1000 * 10; //10 seconds, I would advise against updating faster
 
-        private string epicUserName;
-        private string platform;
+        private readonly string epicUserName;
+        private readonly string platform;
 
         public Timer(string epicUserName, string platform)
         {
@@ -28,17 +28,19 @@ namespace FortniteOverlayIntegration
             timer.Enabled = true;
         }
 
+        // With each tick, get new data
         private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
-            // Call GetData from here?
             Data data = new Data();
 
             List<Stat> getData = data.GetData(epicUserName, platform);
             data.WriteData(getData);
             
+            // TODO: Probably can remove this or refactored to show when data was last updated.
             Console.WriteLine($"Event Fired: {e.SignalTime}");
         }
 
+        // Shutdown timer when program closes
         public void StopAndDispose()
         {
             timer.Stop();
