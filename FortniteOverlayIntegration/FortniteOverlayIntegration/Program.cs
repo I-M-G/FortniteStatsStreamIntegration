@@ -9,14 +9,22 @@ namespace FortniteOverlayIntegration
         {
             string epicUserName = "ninja"; // Add your epic username
             string platform = "pc"; // Update correct platform for the username
+
             Data data = new Data();
-            // TODO: Implement setInterval equivalent in C# for updated stats
+            // Moving in to the Timer class for now
             List<Stat> getData = data.GetData(epicUserName, platform);
             data.WriteData(getData);
             
+            Timer timer = new Timer(epicUserName, platform);
+            timer.SetTimer();
+
+            Console.WriteLine("Press Enter to exit program.\n");
+            Console.ReadLine();
+
+            timer.StopAndDispose();
 
             // FOR TESTING. Leave console open to view data.
-            Console.ReadLine();
+            //Console.ReadLine();
         }
     }
 }

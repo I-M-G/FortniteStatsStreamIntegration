@@ -60,7 +60,7 @@ namespace FortniteOverlayIntegration
             stats.Add(totalSquadWins);
             stats.Add(totalSquadKills);
 
-            CalculateStreak(data.lifeTimeStats[8].value);
+            CalculateStreak(System.Convert.ToInt32(data.lifeTimeStats[8].value));
 
             return stats;
         }
@@ -71,7 +71,7 @@ namespace FortniteOverlayIntegration
             for(int i = 0; i < data.Count; i++)
             {
                 // Update file path to where you want the files to save.
-                File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\{data[i].type}.txt", data[i].value);
+                //File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\{data[i].type}.txt", data[i].value);
             }
         }
         
@@ -87,6 +87,7 @@ namespace FortniteOverlayIntegration
             }
 
             streak = Math.Abs(updatedWins - startingWins);
+            // Update file path to where you want the win streak file to be saved
             File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\WinStreak.txt", streak.ToString());
         }
     }
