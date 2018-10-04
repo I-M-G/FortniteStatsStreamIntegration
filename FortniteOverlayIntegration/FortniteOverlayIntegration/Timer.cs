@@ -4,7 +4,7 @@ using System.Timers;
 
 namespace FortniteOverlayIntegration
 {
-    // Could probably just do this in Program.. Leave for now
+    // Could probably just do this in Program.. Leaving for now
     class Timer
     {
         private System.Timers.Timer timer;

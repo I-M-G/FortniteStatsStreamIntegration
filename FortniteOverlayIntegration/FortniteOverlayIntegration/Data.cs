@@ -72,6 +72,7 @@ namespace FortniteOverlayIntegration
             }
         }
         
+        // REFACTOR: Not really a win streak... Tracks wins while live.
         private void CalculateStreak(int updatedWins)
         {
             int streak = 0;
@@ -85,6 +86,17 @@ namespace FortniteOverlayIntegration
             streak = Math.Abs(updatedWins - startingWins);
             // Update file path to where you want the win streak file to be saved
             File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\WinStreak.txt", streak.ToString());
+        }
+
+        /*
+         * When your stream ends and you close the program the win streak file will retain the last value saved.
+         * Doing this to avoid the need to get the file manually.
+         * Calling this when the program starts.
+         */
+        public void ClearWinStreak()
+        {
+            File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\WinStreak.txt", "0");
+
         }
     }
 }
