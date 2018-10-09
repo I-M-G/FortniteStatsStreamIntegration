@@ -57,7 +57,7 @@ namespace FortniteOverlayIntegration
             stats.Add(totalSquadKills);
 
             // Calculates a win streak while program is running.
-            CalculateStreak(System.Convert.ToInt32(data.lifeTimeStats[8].value));
+            CurrentSessionWins(System.Convert.ToInt32(data.lifeTimeStats[8].value));
 
             return stats;
         }
@@ -72,30 +72,31 @@ namespace FortniteOverlayIntegration
             }
         }
         
-        // REFACTOR: Not really a win streak... Tracks wins while live.
-        private void CalculateStreak(int updatedWins)
+        // Total wins while program is running. 
+        // To show amount of wins during the current streaming session
+        private void CurrentSessionWins(int updatedWins)
         {
-            int streak = 0;
+            int wins = 0;
             int startingWins = 0;
-            // Do not overwrite startingWins, so that we can check the win streak while program is running.
+            // Do not overwrite startingWins, so that we can check the wins while program is running.
             if(startingWins == 0)
             {
                 startingWins = updatedWins;
             }
 
-            streak = Math.Abs(updatedWins - startingWins);
-            // Update file path to where you want the win streak file to be saved
-            File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\WinStreak.txt", streak.ToString());
+            wins = Math.Abs(updatedWins - startingWins);
+            // Update file path to where you want the session win total file to be saved
+            File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\SessionWins.txt", wins.ToString());
         }
 
         /*
          * When your stream ends and you close the program the win streak file will retain the last value saved.
-         * Doing this to avoid the need to get the file manually.
+         * This prevents having to manually change the file.
          * Calling this when the program starts.
          */
-        public void ClearWinStreak()
+        public void ClearSessionWinsFile()
         {
-            File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\WinStreak.txt", "0");
+            File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\SessionWins.txt", "0");
 
         }
     }

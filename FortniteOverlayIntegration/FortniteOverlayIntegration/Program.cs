@@ -12,7 +12,7 @@ namespace FortniteOverlayIntegration
 
             // Gets the initial data
             Data data = new Data();
-            data.ClearWinStreak(); // Override the file to Zero if old value is still there.
+            data.ClearSessionWinsFile(); // Override the file to Zero if old value is still there.
             List<Stat> getData = data.GetData(epicUserName, platform);
             data.WriteData(getData);
             
