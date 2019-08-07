@@ -16,14 +16,14 @@ namespace FortniteOverlayIntegration
             var client = new RestClient($"https://api.fortnitetracker.com/v1/profile/{platform}/{epicUserName}");
             var request = new RestRequest(Method.GET);
             //request.AddHeader("Cache-Control", "no-cache");
-            request.AddHeader("TRN-Api-Key", Credentials.ApiKey);
+            request.AddHeader("TRN-Api-Key", Credentials.newApiKey); // Update with your API Key
 
             IRestResponse response = client.Execute(request);
 
             var responseData = response.Content;
 
             var data = JsonConvert.DeserializeObject<dynamic>(responseData);
-            //Console.WriteLine(data);
+            Console.WriteLine(data);
 
             // TODO - REMOVE AFTER TESTING
             // Writes all the JSON to a txt file
@@ -56,7 +56,7 @@ namespace FortniteOverlayIntegration
             stats.Add(totalSquadWins);
             stats.Add(totalSquadKills);
 
-            // Calculates a win streak while program is running.
+            // Calculates stream session wins while program is running.
             CurrentSessionWins(System.Convert.ToInt32(data.lifeTimeStats[8].value));
 
             return stats;
@@ -68,7 +68,7 @@ namespace FortniteOverlayIntegration
             for(int i = 0; i < data.Count; i++)
             {
                 // Update file path to where you want the files to save.
-                //File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\{data[i].type}.txt", data[i].value);
+                File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\{data[i].type}.txt", data[i].value);
             }
         }
         
@@ -97,6 +97,12 @@ namespace FortniteOverlayIntegration
         public void ClearSessionWinsFile()
         {
             File.WriteAllText($@"D:\Code\Github\FortniteOverlayStats\FortniteOverlayIntegration\FortniteOverlayIntegration\StatFiles\SessionWins.txt", "0");
+
+        }
+
+        // Calculate win streak
+        private void CalculateWinStreak()
+        {
 
         }
     }

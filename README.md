@@ -6,11 +6,24 @@ This program allows you to add your Fortnite stats to your stream overlay. The p
 ## Application Setup
 
 __Get your API key here:__ [FortniteTracker](https://fortnitetracker.com/site-api)
+You may need to generate a new API Key if you have an old one or you are get `Invalid Authentication Credentials` from the server. [Tracker Network](https://tracker.gg/developers) has added a developer dashboard to handle Keys for all game titles.
 
 The Fortnite Tracker endpoint is currently:
 `https://api.fortnitetracker.com/v1/profile/{platform}/{epic-nickname}`
+There are additional endpoint available now. I'll be exploring them to see if they could be useful here.
 
 The three platforms are pc, xbl, and psn. You'll have to pick the correct platform for the epic nickname. I would suggest going to [Fortnite Tracker](https://fortnitetracker.com) and verifying that the nickname is correct. Sometimes the gamertag will be different than the epic nickname.
+
+In `Program.cs` update username and platform:
+```cs
+string epicUserName = "ninja"; 
+string platform = "pc";
+```
+In `Data.cs` update the request with your API Key:
+```cs
+request.AddHeader("TRN-Api-Key", "YOUR_KEY_HERE");
+```
+
 ***
 
 ## Steam Setup

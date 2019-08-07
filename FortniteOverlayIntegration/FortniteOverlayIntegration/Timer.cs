@@ -8,7 +8,7 @@ namespace FortniteOverlayIntegration
     class Timer
     {
         private System.Timers.Timer timer;
-        private readonly int frequency = 1000 * 10; //10 seconds, I would advise against updating faster
+        private readonly int frequency = 1000 * 15; // LIMIT: 1 request per 2 seconds
 
         private readonly string epicUserName;
         private readonly string platform;

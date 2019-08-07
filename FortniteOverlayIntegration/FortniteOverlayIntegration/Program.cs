@@ -15,7 +15,7 @@ namespace FortniteOverlayIntegration
             data.ClearSessionWinsFile(); // Override the file to Zero if old value is still there.
             List<Stat> getData = data.GetData(epicUserName, platform);
             data.WriteData(getData);
-            
+
             // Checks for new data
             Timer timer = new Timer(epicUserName, platform);
             timer.SetTimer();
